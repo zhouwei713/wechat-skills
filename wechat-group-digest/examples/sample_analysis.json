@@ -1,0 +1,96 @@
+{
+  "lead": "今天 60 条消息里，一半在聊 Seedance 2.0 到底换不换，从中午聊到晚上，最后大致落在口播用新版、剧情用旧版。另一个值得收藏的是阿杰分享的公众号写稿流程，去 AI 味的提示词直接给了。剪映字幕批量改字体这个问题，这周已经第三次有人问了。",
+  "lead_highlight": "Seedance 2.0 到底换不换",
+  "key_points": [
+    {"text": "Seedance 2.0 人脸稳了，运镜变僵，做口播可以换，做剧情的先别急。", "highlight": "", "source": ["T1"]},
+    {"text": "阿杰的写稿流程关键在第三步，去 AI 味要单独跑一遍，提示词在干货区。", "highlight": "", "source": ["T2"]},
+    {"text": "剪映字幕批量改字体有三个人在问，没人有办法，适合做成小工具。", "highlight": "", "source": ["A1"]}
+  ],
+  "topics": [
+    {
+      "id": "T1", "title": "Seedance 2.0 要不要换？", "type": "争论", "extra_tags": ["工具测评"], "status": "有共识", "expanded": true,
+      "msg_ids": [9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,57,58],
+      "bullets": [
+        {"text": "Momo 用同一张参考图跑了 10 次，人脸基本不跑了，旧版跑三次就换脸。", "highlight": "人脸基本不跑了", "refs": [9,10,11]},
+        {"text": "老周觉得镜头运动很死板，推拉像 PPT，做剧情片反而更难用，一只阿飞的短剧废片率也变高了。", "highlight": "", "refs": [12,13,26]},
+        {"text": "阿杰说把运镜写进提示词第一句会稳一些，而且运镜词要写具体。老周试了还是觉得僵，认为问题在镜头节奏。", "highlight": "运镜写进提示词第一句", "refs": [18,19,20,28,29]},
+        {"text": "新版单条积分比旧版多 30% 左右。", "highlight": "", "refs": [15,16]},
+        {"text": "晚上 Momo 又跑了 5 条剧情素材，认同老周的判断，最后大家落在口播用新版、剧情用旧版。", "highlight": "口播用新版、剧情用旧版", "refs": [57,58]}
+      ],
+      "disagreement": "运镜写在第一句到底有没有用，阿杰说有，老周说没用，两边都只跑了几条，没有正式对比。",
+      "comment": "结论靠的是几个人的手感，样本很少。Momo 说的「得有人系统测一下」没人接，这件事本身就是一篇文章。"
+    },
+    {
+      "id": "T2", "title": "公众号写稿四步流程，40 分钟出稿", "type": "经验分享", "status": "已沉淀", "expanded": true,
+      "msg_ids": [31,32,33,34,35,36,37,38,39,40,41,42,43,44,45],
+      "bullets": [
+        {"text": "阿杰的流程分四步，选题看 X 热榜，初稿交给 Claude 并给历史文章当风格参考，单独去 AI 味，最后用排版插件出图。", "highlight": "", "refs": [31,32]},
+        {"text": "橙子问去 AI 味能不能写稿时一起要求，阿杰说一起要求效果差很多，分开跑才稳定。", "highlight": "分开跑才稳定", "refs": [36,37]},
+        {"text": "排版用的是开源的 doocs/md，Kevin 也在用。", "highlight": "", "refs": [40,41]},
+        {"text": "橙子想把流程接进飞书多维表格自动跑，阿杰说可以但还没做。", "highlight": "", "refs": [42,43,44]}
+      ],
+      "disagreement": null,
+      "comment": "今天最实用的一段。自动化这一步阿杰明确说没时间做，是个现成的空位。"
+    },
+    {
+      "id": "T3", "title": "视频号带外链的视频突然没量了", "type": "求助答疑", "status": "有共识", "expanded": true,
+      "msg_ids": [47,48,49,50,51,52,53,54,55,56],
+      "bullets": [
+        {"text": "小鹿、Kevin、一只阿飞三个号这周带外链的视频都掉量，Kevin 从几千掉到几百。", "highlight": "", "refs": [47,48,49]},
+        {"text": "Kevin 推测平台在收紧导流，因为不带链接的同类视频数据正常。", "highlight": "不带链接的同类视频数据正常", "refs": [50]},
+        {"text": "大家同意先把链接挪到置顶评论观察一周，Kevin 发了一张表收集数据。", "highlight": "", "refs": [53,54,55]}
+      ],
+      "disagreement": null,
+      "comment": "目前只有三个号的样本，原因是推测。Kevin 的数据表如果能收上来十几个号，结论会可靠很多。"
+    },
+    {
+      "id": "T4", "title": "可灵上线首尾帧控制", "type": "行业消息", "status": "简单提及", "expanded": true,
+      "msg_ids": [2,3,4,5,6,7,8],
+      "bullets": [
+        {"text": "一只阿飞转了更新说明，Momo 试了两条，转场比之前顺，首尾帧差太多时会糊。", "highlight": "", "refs": [2,5]},
+        {"text": "老周建议首尾差别大的时候中间加一句过渡描述。", "highlight": "", "refs": [7]}
+      ],
+      "disagreement": null,
+      "comment": null
+    },
+    {
+      "id": "T5", "title": "剪映字幕批量改字体", "type": "求助答疑", "status": "没人回", "expanded": false,
+      "msg_ids": [59,60,61], "bullets": []
+    },
+    {
+      "id": "T6", "title": "新人问账号定位", "type": "求助答疑", "status": "没人回", "expanded": false,
+      "msg_ids": [62], "bullets": []
+    }
+  ],
+  "roles": {"questions": [15,33,36,42,47,59,62], "answers": [16,34,37,43,50,53]},
+  "tips": [
+    {"title": "去 AI 味要单独跑一遍", "body": "写稿和去 AI 味分两次让模型做，写的时候一起要求效果差很多。", "verbatim": "保留原意，删掉所有总结句和排比，每段不超过三句，口语一点", "refs": [34,37], "credibility": "待验证", "source": "群友"},
+    {"title": "Seedance 运镜写在提示词第一句", "body": "运镜描述放开头比放结尾稳定，放结尾经常被忽略。运镜词要具体，比如写「镜头缓慢推近到人物眼睛」。", "verbatim": null, "refs": [18,20,28], "credibility": "待验证", "source": "群友"},
+    {"title": "可灵首尾帧差别大时加过渡描述", "body": "首帧和尾帧差太多画面会糊，在提示词中间加一句过渡描述会好一些。", "verbatim": null, "refs": [5,7], "credibility": "推测", "source": "群友"},
+    {"title": "视频号外链先放置顶评论", "body": "本周带外链的视频有掉量迹象，链接先挪到置顶评论观察一周。", "verbatim": null, "refs": [50,53], "credibility": "推测", "source": "群友"}
+  ],
+  "open_questions": [
+    {"msg_id": 59, "text": "剪映的智能字幕怎么批量改字体？一条条改太累了", "followers": 2},
+    {"msg_id": 42, "text": "阿杰的写稿流程能不能接进飞书多维表格自动跑？", "followers": 1},
+    {"msg_id": 62, "text": "刚开始做号，账号定位先做 AI 工具还是 AI 副业？", "followers": 0}
+  ],
+  "actions": [
+    {"type": "做工具", "title": "剪映字幕批量改字体的小工具", "signal": "小鹿今天问，Kevin 说这周第二次，橙子上周也问过，三个人都没找到办法。", "first_step": "打开一个剪映草稿的 draft_content.json，确认字幕字体字段能不能直接批量替换。", "priority": 3, "difficulty": "中", "effort": "约 1 天", "source": ["Q1"]},
+    {"type": "写文章", "title": "《Seedance 2.0 换不换？口播和剧情各跑 10 条给你答案》", "signal": "今天最热的话题，7 个人参与，结论全靠手感，Momo 说得有人系统测一下但没人接。", "first_step": "同一组参考图，口播和剧情两类素材新旧版各跑 10 条，顺手把运镜位置也做成对照组。", "priority": 3, "difficulty": "中", "effort": "约半天", "source": ["T1", "tip2"]},
+    {"type": "做Skill", "title": "把阿杰的四步写稿流程做成 skill，接飞书多维表格自动跑", "signal": "橙子当场说要是有人做成 skill 就好了，阿杰说自己没时间做。", "first_step": "用群里给的去 AI 味提示词，先把选题到初稿两步串起来跑通。", "priority": 2, "difficulty": "中", "effort": "约 2 天", "source": ["T2", "Q2"]},
+    {"type": "做内容", "title": "视频号外链掉量，收集十个号的数据发一条数据帖", "signal": "三个号同时掉量，只有推测没有数据，Kevin 已经开了收集表。", "first_step": "在群里提醒大家填 Kevin 的表，一周后把带链接和不带链接的播放数据做成对比图。", "priority": 2, "difficulty": "低", "effort": "约 1 周", "source": ["T3"]},
+    {"type": "马上试", "title": "验证运镜写在提示词第一句有没有用", "signal": "阿杰和老周各说各的，都没做对照。", "first_step": "同一段提示词只调换运镜位置，各跑 3 条对比。", "priority": 1, "difficulty": "低", "effort": "约 10 分钟", "source": ["tip2"]}
+  ],
+  "quotes": [
+    {"msg_id": 22, "text": "工具换得勤的人，作品一般都不多。"},
+    {"msg_id": 39, "text": "去 AI 味这一步省了，前面九十分的活全白干。"}
+  ],
+  "links": [
+    {"url": "https://klingai.com/release-notes/first-last-frame?utm_source=wechat", "title": "可灵首尾帧功能更新说明", "note": "一只阿飞转发的官方更新，话题 4 由它引起", "read": "未读取"},
+    {"url": "https://www.bilibili.com/video/BV1xx411c7mD", "title": "Seedance 新旧版 10 次生成对比", "note": "Momo 自己跑的对比视频，人脸一致性的依据", "read": "仅标题"},
+    {"url": "https://x.com/seedance_ai/status/1845200000000000001", "title": "Seedance 2.0 官方发布帖", "note": "橙子补充的官方信息来源", "read": "未读取"},
+    {"url": "https://github.com/doocs/md", "title": "doocs/md 微信 Markdown 编辑器", "note": "阿杰写稿流程第四步用的开源排版工具", "read": "已读取"},
+    {"url": "https://mp.weixin.qq.com/s/AbCdEfGhIjKlMn", "title": "视频号九月流量规则解读", "note": "Kevin 推测限流原因时引用的文章", "read": "未读取"},
+    {"url": "https://docs.qq.com/sheet/DSmVxYWZ1aGtl", "title": "视频号外链播放数据收集表", "note": "Kevin 发起的数据收集，属于群内文档，未打开", "read": "未尝试"}
+  ]
+}

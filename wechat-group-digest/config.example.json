@@ -1,0 +1,36 @@
+{
+  "group_id": "my-group",
+  "group_name": "示例群名",
+  "title_suffix": "今日群聊日报",
+  "brand": "群聊日报",
+
+  "reader_profile": {
+    "who": "AI 工具类公众号作者，也写 X 和小红书",
+    "good_at": ["AI 工具测评", "提示词", "AI Skill 开发", "视频生成工作流"],
+    "not_doing": ["课程带货", "纯资讯搬运"],
+    "channels": ["公众号", "X", "小红书"]
+  },
+
+  "aliases": { "阿杰2号": "阿杰" },
+  "ignore_senders": ["群管家机器人"],
+  "strip_name_prefix": "",
+
+  "gap_minutes": 20,
+  "max_topics": 7,
+  "max_actions": 5,
+  "ranking_top": 7,
+  "max_links_shown": 8,
+  "lead_max_chars": 140,
+  "show_actions": true,
+  "show_quotes": true,
+
+  "link_fetch": { "enabled": true, "max_links": 6 },
+
+  "anonymize": "none",
+  "anonymize_keep": [],
+
+  "style_bans": ["——", "—", "不是[^。！？\\n]{0,30}而是"],
+
+  "theme": { "accent": "#e2572b", "accent-soft": "#fdeee7", "bg": "#f3f1ec" },
+  "png_scale": 2
+}

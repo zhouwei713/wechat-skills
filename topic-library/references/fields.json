@@ -1,0 +1,254 @@
+{
+  "_说明": "多维表格字段定义，唯一来源。type 对应飞书多维表格字段类型；filled_by 表示谁来填；vocab=fixed 的字段只能用 options 里的值；keep_on_update=true 的字段在更新已有记录时不覆盖。 long_text 建出来就是 text，multi_select 建出来返回 select（靠 multiple=true 区分），这两类不算差异。",
+  "_api注意": "本版 open API 有三处和字面类型不一致，建表时按这里写：① 匹配度 建 number（rating 不被支持）；② 钩子词 / 提到的工具 建 long_text（选项数会超 50，单/多选会静默截断）；③ 链接 建 text（CLI 建不出 url 类型），超链接对象写入前会被 norm() 拆成纯字符串。字段名和校验规则一律用本文件的值。",
+  "table_name": "对标文章选题库",
+  "primary_field": "标题",
+  "match_field": "链接",
+  "fields": [
+    {
+      "name": "标题",
+      "type": "text",
+      "filled_by": "script"
+    },
+    {
+      "name": "公众号",
+      "type": "single_select",
+      "filled_by": "script",
+      "vocab": "open"
+    },
+    {
+      "name": "链接",
+      "type": "url",
+      "filled_by": "script",
+      "api_type": "text",
+      "reason": "CLI 建不出 url 类型，只能建成 text；写入时超链接对象会被 norm() 拆成纯链接字符串"
+    },
+    {
+      "name": "发布日期",
+      "type": "date",
+      "filled_by": "script"
+    },
+    {
+      "name": "入库日期",
+      "type": "date",
+      "filled_by": "script",
+      "keep_on_update": true
+    },
+    {
+      "name": "字数",
+      "type": "number",
+      "filled_by": "script"
+    },
+    {
+      "name": "配图数",
+      "type": "number",
+      "filled_by": "script"
+    },
+    {
+      "name": "来源",
+      "type": "single_select",
+      "filled_by": "script",
+      "vocab": "fixed",
+      "options": [
+        "转发",
+        "群聊"
+      ]
+    },
+    {
+      "name": "对标账号",
+      "type": "checkbox",
+      "filled_by": "script"
+    },
+    {
+      "name": "读取状态",
+      "type": "single_select",
+      "filled_by": "script",
+      "vocab": "fixed",
+      "options": [
+        "已读全文",
+        "仅卡片",
+        "未读取"
+      ]
+    },
+    {
+      "name": "一句话核心",
+      "type": "text",
+      "filled_by": "model"
+    },
+    {
+      "name": "选题类型",
+      "type": "single_select",
+      "filled_by": "model",
+      "vocab": "fixed",
+      "options": [
+        "工具测评",
+        "教程",
+        "合集",
+        "工作流",
+        "观点",
+        "资讯",
+        "案例拆解"
+      ]
+    },
+    {
+      "name": "赛道标签",
+      "type": "multi_select",
+      "filled_by": "model",
+      "vocab": "fixed",
+      "options": [
+        "AI视频",
+        "AI绘图",
+        "AI编程",
+        "Agent",
+        "大模型",
+        "提示词",
+        "自媒体运营",
+        "办公效率",
+        "出海",
+        "其他"
+      ],
+      "api_note": "API 返回 select，靠 multiple=true 区分多选"
+    },
+    {
+      "name": "时效性",
+      "type": "single_select",
+      "filled_by": "model",
+      "vocab": "fixed",
+      "options": [
+        "热点",
+        "常青"
+      ]
+    },
+    {
+      "name": "目标读者",
+      "type": "text",
+      "filled_by": "model"
+    },
+    {
+      "name": "标题公式",
+      "type": "multi_select",
+      "filled_by": "model",
+      "vocab": "fixed",
+      "options": [
+        "数字时效",
+        "对比锚定",
+        "结果前置",
+        "信息差",
+        "痛点提问",
+        "清单合集",
+        "系列编号",
+        "身份代入",
+        "反常识",
+        "其他"
+      ],
+      "api_note": "API 返回 select，靠 multiple=true 区分多选"
+    },
+    {
+      "name": "钩子词",
+      "type": "long_text",
+      "filled_by": "model",
+      "vocab": "open",
+      "api_type": "text",
+      "reason": "实测会累积到 113 个值，多选上限 50 会静默截断"
+    },
+    {
+      "name": "文章形态",
+      "type": "single_select",
+      "filled_by": "model",
+      "vocab": "fixed",
+      "options": [
+        "工具书型",
+        "合集型",
+        "工作流型",
+        "观点型",
+        "资讯型"
+      ]
+    },
+    {
+      "name": "开头方式",
+      "type": "single_select",
+      "filled_by": "model",
+      "vocab": "fixed",
+      "options": [
+        "讲来由",
+        "讲痛点",
+        "先摆结果",
+        "制造悬念",
+        "热点切入",
+        "直接上干货"
+      ]
+    },
+    {
+      "name": "大纲",
+      "type": "long_text",
+      "filled_by": "model",
+      "api_type": "text"
+    },
+    {
+      "name": "提到的工具",
+      "type": "long_text",
+      "filled_by": "model",
+      "vocab": "open",
+      "api_type": "text",
+      "reason": "实测会累积到 200 个值，多选上限 50 会静默截断"
+    },
+    {
+      "name": "可带走资产",
+      "type": "long_text",
+      "filled_by": "model",
+      "api_type": "text"
+    },
+    {
+      "name": "亮点",
+      "type": "long_text",
+      "filled_by": "model",
+      "api_type": "text"
+    },
+    {
+      "name": "空白",
+      "type": "long_text",
+      "filled_by": "model",
+      "api_type": "text"
+    },
+    {
+      "name": "我的角度",
+      "type": "text",
+      "filled_by": "model"
+    },
+    {
+      "name": "建议标题",
+      "type": "text",
+      "filled_by": "model"
+    },
+    {
+      "name": "匹配度",
+      "type": "number",
+      "filled_by": "model",
+      "min": 1,
+      "max": 5,
+      "api_type": "number",
+      "reason": "本版 open API 的 allowed discriminator 不含 rating，只能建 number"
+    },
+    {
+      "name": "选题簇",
+      "type": "single_select",
+      "filled_by": "model",
+      "vocab": "open"
+    },
+    {
+      "name": "选题状态",
+      "type": "single_select",
+      "filled_by": "user",
+      "vocab": "fixed",
+      "keep_on_update": true,
+      "options": [
+        "待评估",
+        "已入选",
+        "写作中",
+        "已发布",
+        "放弃"
+      ],
+      "default": "待评估"
+    }
+  ]
+}
