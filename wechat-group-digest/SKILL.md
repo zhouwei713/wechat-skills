@@ -27,12 +27,14 @@ author: WorkBuddy
 渲染 PNG 需要 playwright：
 
 ```bash
-pip install playwright      # 已装可跳过
-python -m playwright install chromium
+pip install playwright --break-system-packages   # 已装可跳过；非 Linux 去掉 --break-system-packages
+python -m playwright install chromium            # 环境里已有 Chromium 时跳过
 ```
 
-**如果渲染报 playwright 找不到**，说明当前解释器没装。换一个装了 playwright 的解释器，
-或装到当前这个里（`python -m pip install playwright`）——不是脚本的问题，是环境的问题。
+**实测坑**：托管/隔离安装的 Python 里常常没有 playwright，渲染会失败。
+遇到「渲染报 playwright 找不到」，是当前解释器没装，不是脚本的问题——
+换一个装了 playwright 的解释器，或装到当前这个里（`python -m pip install playwright`）。
+Windows 上 venv 的解释器在 `Scripts\python.exe`（不是 `bin\python.exe`）。
 
 需要中文字体（Noto Sans CJK 或系统自带中文字体），否则长图会出现方框。
 

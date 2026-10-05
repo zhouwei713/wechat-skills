@@ -12,9 +12,11 @@
     },
     {
       "name": "公众号",
-      "type": "single_select",
+      "type": "text",
       "filled_by": "script",
-      "vocab": "open"
+      "vocab": "open",
+      "api_type": "text",
+      "reason": "实测 44 篇就攒出 37 个选项，单选上限 50 会静默截断，已改成 text"
     },
     {
       "name": "链接",
@@ -233,7 +235,8 @@
       "name": "选题簇",
       "type": "single_select",
       "filled_by": "model",
-      "vocab": "open"
+      "vocab": "open",
+      "note": "刻意保留单选：这张表的核心分组维度，「哪些题被写烂了」全靠它，且筛选价值高于公众号。28/50 还有缓冲。到 45 左右再评估要不要换 text"
     },
     {
       "name": "选题状态",

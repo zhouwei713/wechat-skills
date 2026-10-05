@@ -65,7 +65,9 @@ def main():
                 errs.append(f'「{name}」定义 {lo} 个选项，线上 {ro} 个，差异：{sorted(diff)}')
         elif lf.get('vocab') == 'open' and rf.get('options') is not None:
             n = len(rf.get('options') or [])
-            notes.append(f'「{name}」开放词表，线上已存 {n} 项' + ('（接近 50 上限，新值会被静默截断）' if n >= 45 else ''))
+            # 只有还是单选/多选列时才需要盯上限；已经是 text 的不受 50 限制
+            notes.append(f'「{name}」开放词表（{lf["type"]}），线上已存 {n} 项'
+                         + ('（接近 50 上限，新值会被静默截断）' if n >= 45 else ''))
 
     for name in remote:
         if name not in local:

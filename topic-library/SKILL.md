@@ -3,7 +3,7 @@ name: topic-library
 description: 把转发进来的公众号文章（对标文章、群里分享的好文章）拆解成选题资料，写入飞书多维表格选题库。每篇提取一句话核心、选题类型、赛道、时效、标题公式、钩子词、大纲、可带走资产、亮点、空白、我的角度、建议标题、匹配度和选题簇，并检测撞题。当用户转发或粘贴文章卡片、链接，说"存到选题库""收进对标库""拆一下这几篇""整理到多维表格"，或想从对标文章里找选题时，务必使用此skill。
 description_zh: 把转发或群里分享的公众号文章拆解成选题资料，写入飞书多维表格选题库，含撞题检测。
 description_en: Break forwarded WeChat articles into structured topic records in a Feishu Bitable, with duplicate-cluster detection.
-version: 1.1.0
+version: 1.2.0
 author: WorkBuddy
 ---
 
@@ -300,9 +300,34 @@ Python 里调就 `subprocess.run([NODE, CLI, ...], capture_output=True, text=Tru
 * **单选/多选的选项数硬上限 50，超了静默截断**（实测传 60 存回 50，API 不报错）。
   所以 `提到的工具`（200 个）和 `钩子词`（113 个）**不能做多选列**，
   已改成 `text` 长文本、用换行分隔。**新建开放词表列前先数一下将来会有多少个值，超过 50 就直接建 text。**
-  ⚠️ **`公众号` 和 `选题簇` 现在还是单选列，选项数会持续涨**（实测已存 37 / 28 项）。
-  涨到 45 左右就该换成 `text` 列，否则新公众号的名字会被静默丢弃、记录直接写不进去。
-  改列前先跑 `scripts/check_fields.py` 看清现状。
+  ⚠️ **单选列的选项数会持续涨**，涨到 45 左右就该换成 `text` 列，
+  否则新的选项名会被静默丢弃、记录直接写不进去。
+  改列前先跑 `scripts/check_fields.py` 看清现状（它会打印每个单/多选列当前已存多少项）。
+
+#### 换列类型：实测不丢数据，放心改
+
+`公众号` 列原本是单选，44 篇就攒出 37 个选项（其中 2 个公众号各出现 2 次），
+离50 的静默截断线已经很近——**新公众号的名字会被静默丢弃、整条记录写不进去，且不报错**。
+已改成 `text`，44/44 逐条比对**零数据丢失**：API 会把单选值自动转成字符串。
+
+```bash
+# ① 先全量导出备份（改列是唯一不可逆的一步）
+#    +record-list 返回结构是 data.fields + data.data + data.record_id_list（注意没有 data.items）
+lark-cli base +record-list --base <BASE> --table <TABLE> --as user \
+  --json '{"page_size":200}' > work/_before.json
+# ② 从 +field-list 里查出 field-id（key 是 name 和 id，不是 field_name / field_id）
+# ③ 改列——必须带 --field-id，否则报 required flag(s) "field-id" not set
+lark-cli base +field-update --base <BASE> --table <TABLE> --as user \
+  --field-id fldxxxxxxxxxxxx --json '{"name":"公众号","type":"text"}'
+# ④ 回读 +record-list，逐条与备份比对，确认零丢失
+```
+
+坑：③ 是**完整 PUT 语义**，只能传列本身想改的属性（`name` + `type`），
+不要带 `is_primary` 之类无关 key，会被 `Unrecognized key(s)` 拒掉。
+
+**`选题簇` 刻意保留单选**（28/50，还有缓冲）：这张表的核心分组维度，
+「哪些题被写烂了」全靠它交叉筛选，筛选价值高于 `公众号`。
+到 45 项左右再评估要不要换 text——换之前先想清楚用什么词表来兜底。
 
 **排错顺序**：先用 `{"fields":["标题"],"rows":[["x"]]}` 这种最小载荷验证通道，
 再逐列加回去定位是哪列的值格式不对，别一上来就整批 29 列。
@@ -367,6 +392,9 @@ python $SKILL/scripts/check_fields.py work/_fields.json
 **三处字面类型和线上不一样，是 API 限制不是写错**：`匹配度` 建 `number`（`rating` 不被支持）、
 `钩子词` 和 `提到的工具` 建 `text`（值数超 50，多选会静默截断）、`链接` 建 `text`（CLI 建不出 `url`）。
 每列的实际类型写在 `fields.json` 的 `api_type` 字段里，`check_fields.py` 以它为准。
+
+`公众号` 原本也是单选，因为同样会撞上 50 上限，已改成 `text`——
+换列的四步命令和「零数据丢失」的实测结论见 7.1 的「换列类型」一节。
 
 ## 示例
 
