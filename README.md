@@ -144,14 +144,6 @@ python $SKILL/scripts/parse_cards.py --from-digest <日报目录>/work/stats.jso
 **改完先跑一遍校验**：`topic-library/scripts/check_fields.py` 会比对字段定义和线上表，
 只报不该有的差异，飞书 API 的已知限制按每列的 `api_type` 声明后自动放行。
 
-## 踩过的坑在各自的 SKILL.md 里
-
-README 不重复了——`lark-cli` 的静默失败、多维表格 50 选项截断、日报 `highlight` 必须逐字切片，
-连同换列类型的四步命令和备份流程，都写在各自的 `SKILL.md`（`topic-library` 的 7.1节最密集）。
-只在一条值得单飞：**静默失败优先怀疑调用方式，不是数据**——
-排错顺序固定为环境变量 → 参数形式 → 路径 → 数据内容，
-这三个最贵的坑全都不报错，返回空或写错位置，很容易一路排查到怀疑数据本身。
-
 ## License
 
 MIT，见 [LICENSE](LICENSE)。
